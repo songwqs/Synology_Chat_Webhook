@@ -4,7 +4,6 @@ Synology_Chat_URL="https://yourQC.com/webapi/entry.cgi?api=SYNO.Chat.External&me
 
 # 要发送的消息内容
 message_text="Hello from Synology Chat!"
-
 # 使用curl发送消息到Synology Chat
 res=$(timeout 20s curl -s -X POST \
      $Synology_Chat_URL \
@@ -16,7 +15,6 @@ res=$(timeout 20s curl -s -X POST \
 
 # 提取success字段的值
 resSuccess=$(echo "$res" | grep -o '"success":\w*' | cut -d':' -f2)
-
 # 检查是否推送成功
 if [[ $resSuccess == "true" ]]; then
     echo "Synology_Chat推送成功"
